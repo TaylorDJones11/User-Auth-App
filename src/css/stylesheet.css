@@ -14,8 +14,9 @@ main {
 }
 
 footer{
-  background-color: blue;
+  padding-top: 25px;
   text-align: center;
+  min-height: 100vh;
 }
 
 
