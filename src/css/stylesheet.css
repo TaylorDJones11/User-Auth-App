@@ -3,13 +3,31 @@
   margin: 0%;
 }
 
+body {
+  min-height: 100vh;
+}
+
+main {
+  padding: 20px;
+  min-height: calc(100vh - 125px);
+  margin-top: 50px;
+}
+
+footer{
+  background-color: blue;
+  text-align: center;
+}
+
 
 /* Login Page */
 
-.submit{
-  margin-top: 10px;
-}
+
 
 .forgotpassword{
   text-decoration: none;
+}
+
+.row{
+  text-align: center;
+  padding: 10px 0px;
 }

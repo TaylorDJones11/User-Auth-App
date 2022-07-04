@@ -1,4 +1,22 @@
+<?php
+require "src/classes/users.class.php";
+session_start();
+?>
 
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libby Library</title>
+    <link rel="stylesheet" href="src/css/stylesheet.css">
+  </head>
+  <body>
+
+
+<main class="">
 <div class="row">
   <div class="col-md-6 mx-auto">
     <div class="card card-body bg-light mt-5">
@@ -43,3 +61,6 @@
   </div>
 
 </div>
+</main>
+</body>
+</html>
