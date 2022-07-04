@@ -18,7 +18,7 @@
     <?php include 'src/inc/header.inc.php'; ?>
 
     <!-- Main -->
-    <?php include 'src/inc/login.inc.php'; ?>
+    <?php include 'src/pages/login.php'; ?>
 
     <!-- Footer -->
     <?php include 'src/inc/footer.inc.php'; ?>
