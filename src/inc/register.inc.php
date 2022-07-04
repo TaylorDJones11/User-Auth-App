@@ -22,7 +22,7 @@ session_start();
     <div class="card card-body bg-light mt-5">
       <h2>Create An Account</h2>
       <p>Please fill out to register with us</p>
-      <form class="" action="register.php" method="post">
+      <form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <div class="form-group">
           <label for="name">Name: <sup>*</sup></label>
           <input type="text" name="name" class="form-control form-control-md

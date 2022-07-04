@@ -1,3 +1,9 @@
+<?php
+require "src/classes/users.class.php";
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
