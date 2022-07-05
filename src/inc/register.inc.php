@@ -1,4 +1,14 @@
 <?php
+
+if(isset($_POST["register"])){
+  //Grabbing Data
+
+  //Instantiate SignupContr class
+
+  //Running error handlers & user signup
+
+  // Going back to login
+}
 require "src/classes/users.class.php";
 session_start();
 ?>
@@ -50,7 +60,7 @@ session_start();
 
         <div class="row">
           <div class="col">
-            <input type="submit" name="" value="Register" class="btn btn-success btn-block mt-2">
+            <input type="submit" name="register" value="Register" class="btn btn-success btn-block mt-2">
           </div>
           <div class="col">
             <a href="index.php" class="btn btn-light btn-block">Have an account? Login</a>
