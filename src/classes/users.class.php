@@ -121,8 +121,8 @@
             'email_err' => '',
             'password_err' => '',
           ];
-            //Load View
-          $this->view('login.php', $data);
+          //   //Load View
+          // $this->view('login.php', $data);
         }
       }
 
