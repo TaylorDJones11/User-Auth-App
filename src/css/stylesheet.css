@@ -26,7 +26,14 @@ footer{
 
 /* Login Page */
 
+.login-text{
+  font-size: calc(1.111rem + .9vw);
+}
 
+.member:hover{
+  filter: brightness(110%);
+  background-color: #574378;
+}
 
 .forgotpassword{
   text-decoration: none;
