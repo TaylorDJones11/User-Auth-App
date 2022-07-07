@@ -26,13 +26,13 @@ footer{
 
 /* Login Page */
 
-.login-text{
+h2.login-text{
   font-size: calc(1.111rem + .9vw);
 }
 
-.member:hover{
+h2.login-text:hover{
   filter: brightness(110%);
-  background-color: #574378;
+  color: #574378;
 }
 
 .forgotpassword{
