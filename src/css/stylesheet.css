@@ -28,11 +28,12 @@ footer{
 
 h2.login-text{
   font-size: calc(1.111rem + .9vw);
+  cursor: pointer;
 }
 
 h2.login-text:hover{
   filter: brightness(110%);
-  color: #574378;
+  color: #0275d8;
 }
 
 .forgotpassword{
