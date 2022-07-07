@@ -1,20 +1,25 @@
 <?php
+session_start();
+require('src/inc/config.inc.php');
+require "src/classes/users.class.php";
 
+$data = null;
 
 if(isset($_POST["login"])){
-  //Grabbing Data
 
-  //Instantiate SignupContr class
+  $data = $_POST;
+  $object = new Users($mysqli);
+  $errors = $object->login();
 
-  //Running error handlers & user signup
+  if(isset($_SESSION['valid'])){
+    header('Location: welcome.php');
+    exit();
+  }
 
-  // Going back to login
 }
-require "src/classes/users.class.php";
-session_start();
+
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -38,43 +43,28 @@ session_start();
         <div class="col member">
           <h2 class="login-text"> Member Login</h2>
         </div>
-
-        <div class="col librarian">
-          <h2 class="login-text">Librarian Login</h2>
-        </div>
       </div>
 
 
 
-
-      <!-- <h2>Login</h2> -->
+      <?php if(isset($errors['success'])): ?>
+        <?php echo $errors['success'] ?>
+      <?php endif; ?>
+      
       <p>Please fill in your credientails</p>
-      <form class="" action="login.php" method="post">
+      <form class="" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <div class="form-group">
+      <div class="form-group">
           <label for="name">Email: <sup>*</sup></label>
-          <input type="email" name="email" class="form-control form-control-md
-          <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo $data['email']; ?>">
-          <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
+          <input type="text" name="email" class="form-control form-control-md
+          <?php echo (isset($errors['email_err']) && !empty($errors['email_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo (isset($data['email'])) ? $data['email'] : ''; ?>">
+          <span class="invalid-feedback"><?php echo (isset($errors['email_err'])) ? $errors['email_err'] : ''; ?></span>
         </div>
         <div class="form-group">
           <label for="name">Password: <sup>*</sup></label>
           <input type="password" name="password" class="form-control form-control-md
-          <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo $data['password']; ?>">
-          <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
-        </div>
-
-        <div class="form-group" style="display:none;">
-          <label for="name">Email: <sup>*</sup></label>
-          <input type="email" name="email" class="form-control form-control-md
-          <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo $data['email']; ?>">
-          <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-        </div>
-        <div class="form-group" style="display:none">
-          <label for="name">Password: <sup>*</sup></label>
-          <input type="password" name="password" class="form-control form-control-md
-          <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo $data['password']; ?>">
-          <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
+          <?php echo (isset($errors['password_err']) && !empty($errors['password_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo (isset($data['password'])) ? $data['password'] : ''; ?>">
+          <span class="invalid-feedback"><?php echo (isset($errors['password_err'])) ? $errors['password_err'] : ''; ?></span>
         </div>
 
         <div class="row">
