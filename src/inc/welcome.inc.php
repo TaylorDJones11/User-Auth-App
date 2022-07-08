@@ -27,34 +27,50 @@ if(!isset($_SESSION['valid'])){
 <main>
 
 <!-- Librarian Welcome View -->
-<table>
-  <tr>
-    <?php if($_SESSION['user_type'] == 'librarian'): ?>
-      <td><b>Book ID</b></td>
-      <td><b>Book Name</b></td>
-      <td><b>Year</b></td>
-      <td><b>Genre</b></td>
-      <td><b>Author name</b></td>
-      <td><b>Author Age</b></td>
-      <td><b>Action</b></td>
-    <?php endif; ?>
-  </tr>
+
+
   <?php foreach($books as $book): ?>
-    <tr>
-      <?php if($_SESSION['user_type'] == 'librarian'): ?>
-        <td><?php echo $book['book_id'] ?></td>
-        <td><?php echo $book['year'] ?></td>
-        <td><?php echo $book['genre'] ?></td>
-        <td><?php echo $book['author_name'] ?></td>
-        <td><?php echo $book['age'] ?></td>
-        <td><a href="edit-book.php?id=<?php echo $book['book_id'] ?>">Edit</a></td>
-        <td><a href="delete-book.php?id=<?php echo $book['book_id'] ?>" onClick='return confirm("Are you sure?")'>Delete</a></td>
+
+<?php if($_SESSION['user_type'] == 'librarian'): ?>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="panel-title"><a href="book.php?id=<?php echo $book['book_id'] ?>"><?php echo $book['bookname'] ?></a></h2>
+        </div>
+        <div class="panel-body">
+            <p>Book ID: <?php echo $book['book_id'] ?></p>
+            <p>Year: <?php echo $book['year'] ?></p>
+            <p>Genre:<?php echo $book['genre'] ?></p>
+            <p>Author:<?php echo $book['author_name'] ?></p>
+            <p>Age:<?php echo $book['age'] ?></p>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+              <div class="col">
+              <a href="edit-book.php?id=<?php echo $book['book_id'] ?>" title="Edit Product" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+              <a href="delete-book.php?id=<?php echo $book['book_id'] ?>" onClick='return confirm("Are you sure?")' title="Delete Product"class="btn btn-sm btn-default"><i class="glyphicon glyphicon-trash"></i></a>
+              </div>
+            </div>
+        </div>
+
         <?php endif; ?>
-    </tr>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Users Welcome Display -->
+
     <div class="grid-item-books">
+      <?php if($_SESSION['user_type'] == 'user'): ?>
         <section class="card-display">
           <div class="card">
               <img src="img/display.png">
@@ -69,8 +85,9 @@ if(!isset($_SESSION['valid'])){
               </div>
             </div>
         </section>
+        <?php endif; ?>
     </div>
 
   <?php endforeach; ?>
-</table>
+
 </main>

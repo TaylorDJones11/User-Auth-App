@@ -25,6 +25,10 @@ footer{
   min-height: 10vh;
 }
 
+a{
+  text-decoration: none;
+}
+
 
 /* Login Page */
 
@@ -54,12 +58,13 @@ label.member{
 /* Members Welcome Page */
 
 h1{
-  text-align: center;
+
   padding-top: 10px;
 }
 
 .welcome-div{
   margin: 90px;
+  text-align: center;
 }
 
 .grid-item-books{

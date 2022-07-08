@@ -119,19 +119,36 @@
 
           if(count($errors) == 0){
 
-            // validate that email doesnt already exist
-            $sql = "select * from users_loginsystem where users_email = '{$data['email']}' and users_password = '{$data['password']}'";
+            // Checking Email/Password submission across "Library" database
+            if($data['login_type'] == 'user'){
+              $sql = "select * from users_loginsystem where users_email = '{$data['email']}' and users_password = '{$data['password']}'";
+            }
+            else{
+              $sql = "select * from librarians_loginsystem where lib_email = '{$data['email']}' and lib_password = '{$data['password']}'";
+            }
+
+
             $result = $this->mysqli->query($sql);
 
             $row = $result->fetch_assoc();
 
-            $form_data = [
-              'name' => trim($row['users_name']),
-              'email' => trim($row['users_email'])
-            ];
-
             if($result->num_rows == 1){
+
+              if($data['login_type'] == 'user'){
+                $form_data = [
+                  'name' => trim($row['users_name']),
+                  'email' => trim($row['users_email'])
+                ];
+              }
+              else{
+                $form_data = [
+                  'name' => 'librarian',
+                  'email' => trim($row['lib_email'])
+                ];
+              }
+
               $_SESSION['valid'] = 1;
+              $_SESSION['user_type'] = $data['login_type'];
               $_SESSION['user'] = $form_data;
             }
             else{
