@@ -38,4 +38,31 @@ class Book{
         return false;
     }
 
+    public function deleteBook($id)
+    {
+        $sql = "delete from books where book_id = $id";
+
+        if ($this->mysqli->query($sql) === TRUE) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateBook($data)
+    {
+        $sql = "update books set bookname = '{$data['bookname']}',
+        author_id = '{$data['author_id']}',
+        year = '{$data['year']}',
+        genre = '{$data['genre']}',
+        age_group = '{$data['age_group']}' where book_id = {$data['book_id']}";
+
+
+        if ($this->mysqli->query($sql) === TRUE) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

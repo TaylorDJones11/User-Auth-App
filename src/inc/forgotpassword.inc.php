@@ -1,3 +1,10 @@
+<?php
+if(isset($_POST["submit"])){
+  header('Location: index.php');
+  exit();
+
+} ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

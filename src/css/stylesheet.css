@@ -18,7 +18,7 @@ img{
 }
 
 footer{
-  position: fixed;
+  position: sticky;
   width: 100vw;
   padding-top: 25px;
   text-align: center;
@@ -80,8 +80,12 @@ label.member{
   border-radius: 5px;
 }
 
-/* Libray Add Book  */
+.welcome-main{
+  padding: 30px;
+}
 
-.add-book{
+/* Libray Add Book/ Edit Book  */
+
+.add-book, .edit-book{
   margin-top: 75px;
 }

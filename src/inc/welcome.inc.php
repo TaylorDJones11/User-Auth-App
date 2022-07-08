@@ -16,7 +16,7 @@ if(!isset($_SESSION['valid'])){
 ?>
 
 
-<main>
+<main class="welcome-main">
 
   <!-- Displaying the User/Librarian Name -->
   <!-- Only Librarians can add new books -->
@@ -48,8 +48,12 @@ if(!isset($_SESSION['valid'])){
         <div class="panel-footer">
           <div class="row">
               <div class="col">
-              <a href="edit-book.php?id=<?php echo $book['book_id'] ?>" title="Edit Product" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
-              <a href="delete-book.php?id=<?php echo $book['book_id'] ?>" onClick='return confirm("Are you sure?")' title="Delete Product"class="btn btn-sm btn-default"><i class="glyphicon glyphicon-trash"></i></a>
+
+              <a href="edit-book.php?id=<?php echo $book['book_id'] ?>" class="btn btn-primary btn-block">Edit</a>
+              </div>
+              <div class="col">
+                <a href="delete-book.php?id=<?php echo $book['book_id'] ?>" onClick='return confirm("Are you sure?")' class="btn btn-primary btn-block">Delete</a>
+
               </div>
             </div>
         </div>
