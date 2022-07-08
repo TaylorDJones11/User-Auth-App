@@ -28,6 +28,14 @@ class Book{
 
     }
 
-    
+    public function addBook($data)
+    {
+        $sql = "insert into books (bookname, author_id, year, genre, age_group) values ('{$data['bookname']}','{$data['author_id']}','{$data['year']}','{$data['genre']}','{$data['age_group']}')";
+        if ($this->mysqli->query($sql) === TRUE) {
+            return true;
+        }
+
+        return false;
+    }
 
 }

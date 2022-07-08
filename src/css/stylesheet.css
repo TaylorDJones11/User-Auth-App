@@ -47,6 +47,10 @@ h2.login-text:hover{
   padding: 10px 0px;
 }
 
+label.member{
+  padding-right: 10px;
+}
+
 /* Welcome Page / Library Books Display */
 
 h1{
