@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('src/inc/config.inc.php');
-require "src/classes/Book.class.php";
+require "src/classes/book.class.php";
 
 $bookObject = new Book($mysqli);
 

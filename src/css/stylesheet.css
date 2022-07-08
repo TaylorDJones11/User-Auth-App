@@ -51,8 +51,23 @@ label.member{
   padding-right: 10px;
 }
 
-/* Welcome Page / Library Books Display */
+/* Members Welcome Page */
 
 h1{
   text-align: center;
+  padding-top: 10px;
+}
+
+.welcome-div{
+  margin: 90px;
+}
+
+.grid-item-books{
+  margin-bottom: 15px;
+}
+
+/* Libray Welcome Page */
+
+table{
+  width: 100vw;
 }

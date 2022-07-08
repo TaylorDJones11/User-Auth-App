@@ -17,8 +17,8 @@ if(!isset($_SESSION['valid'])){
 
 <!-- Displaying the User/Librarian Name -->
 <!-- Only Librarians can add new books -->
-<div style="margin: 100px;">
-  <h1>Welcome <?php echo $_SESSION['user']['name']; ?></h1>
+<div class="welcome-div">
+  <h1>Welcome, <?php echo $_SESSION['user']['name']; ?></h1>
   <?php if($_SESSION['user_type'] == 'librarian'): ?>
     <a href="add-book.php">Add new book</a>
   <?php endif; ?>
@@ -27,7 +27,7 @@ if(!isset($_SESSION['valid'])){
 <main>
 
 <!-- Librarian Welcome View -->
-<table style="width: 100%">
+<table>
   <tr>
     <?php if($_SESSION['user_type'] == 'librarian'): ?>
       <td><b>Book ID</b></td>
