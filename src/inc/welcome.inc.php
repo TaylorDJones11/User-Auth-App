@@ -26,21 +26,16 @@ if(!isset($_SESSION['valid'])){
 <hr>
 <main>
 
-<!-- Members/ Librarian View -->
+<!-- Librarian Welcome View -->
 <table style="width: 100%">
   <tr>
     <?php if($_SESSION['user_type'] == 'librarian'): ?>
       <td><b>Book ID</b></td>
-    <?php endif; ?>
-
-    <td><b>Book Name</b></td>
-    <td><b>Year</b></td>
-    <td><b>Genre</b></td>
-    <td><b>Author name</b></td>
-    <?php if($_SESSION['user_type'] == 'librarian'): ?>
+      <td><b>Book Name</b></td>
+      <td><b>Year</b></td>
+      <td><b>Genre</b></td>
+      <td><b>Author name</b></td>
       <td><b>Author Age</b></td>
-    <?php endif; ?>
-    <?php if($_SESSION['user_type'] == 'librarian'): ?>
       <td><b>Action</b></td>
     <?php endif; ?>
   </tr>
@@ -48,20 +43,33 @@ if(!isset($_SESSION['valid'])){
     <tr>
       <?php if($_SESSION['user_type'] == 'librarian'): ?>
         <td><?php echo $book['book_id'] ?></td>
-        <?php endif; ?>
-
-      <td><a href="book.php?id=<?php echo $book['book_id'] ?>"><?php echo $book['bookname'] ?></a></td>
-      <td><?php echo $book['year'] ?></td>
-      <td><?php echo $book['genre'] ?></td>
-      <td><?php echo $book['author_name'] ?></td>
-      <?php if($_SESSION['user_type'] == 'librarian'): ?>
+        <td><?php echo $book['year'] ?></td>
+        <td><?php echo $book['genre'] ?></td>
+        <td><?php echo $book['author_name'] ?></td>
         <td><?php echo $book['age'] ?></td>
-      <?php endif; ?>
-      <?php if($_SESSION['user_type'] == 'librarian'): ?>
         <td><a href="edit-book.php?id=<?php echo $book['book_id'] ?>">Edit</a></td>
         <td><a href="delete-book.php?id=<?php echo $book['book_id'] ?>" onClick='return confirm("Are you sure?")'>Delete</a></td>
-      <?php endif; ?>
+        <?php endif; ?>
     </tr>
+
+
+<!-- Users Welcome Display -->
+    <div class="grid-item-books">
+        <section class="card-display">
+          <div class="card">
+              <img src="img/display.png">
+              <div class="container">
+                <div class="content">
+                  <h4><b><a href="book.php?id=<?php echo $book['book_id'] ?>"><?php echo $book['bookname'] ?></a></b></h4>
+                  <p><?php echo $book['author_name'] ?></p>
+                  <p><?php echo $book['year'] ?></p>
+
+                </div>
+
+              </div>
+            </div>
+        </section>
+    </div>
 
   <?php endforeach; ?>
 </table>
