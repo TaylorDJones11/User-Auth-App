@@ -19,7 +19,7 @@
     <div class="card card-body bg-light mt-5">
       <h2>Forgot Your Password?</h2>
       <p>Please fill in your email</p>
-      <form class="" action="login.php" method="post">
+      <form class="" action="index.php" method="post">
 
         <div class="form-group">
           <label for="name">Email: <sup>*</sup></label>

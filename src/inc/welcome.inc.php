@@ -21,6 +21,9 @@ if(!isset($_SESSION['valid'])){
   <?php endif; ?>
 </div>
 <hr>
+<main>
+
+
 <table style="width: 100%">
   <tr>
     <td><b>Book ID</b></td>
@@ -49,3 +52,4 @@ if(!isset($_SESSION['valid'])){
 
   <?php endforeach; ?>
 </table>
+</main>

@@ -18,9 +18,11 @@ img{
 }
 
 footer{
+  position: fixed;
+  width: 100vw;
   padding-top: 25px;
   text-align: center;
-  min-height: 100vh;
+  min-height: 10vh;
 }
 
 
