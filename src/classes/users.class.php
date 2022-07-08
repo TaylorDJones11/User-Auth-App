@@ -1,77 +1,94 @@
 <?php
-    class Users {
-      public function __construct(){
 
+    class Users {
+      private $mysqli;
+
+      public function __construct($mysqli){
+        $this->mysqli = $mysqli;
       }
 
       //Registration Submission
       public function register(){
+
+
         //Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
           //Sanitize POST data
           $_POST= filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-          //Process Form
-          $data = [
-            'name' => trim($_POST['name']),
-            'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),
-            'confirm_password' => trim($_POST['confirm_password']),
-            'name_err' => '',
-            'email_err' => '',
-            'password_err' => '',
-            'confirm_password_err' => ''
-          ];
+          $data = $_POST;
+          $errors = [];
+
+          // echo "<pre>";
+          // print_r($data);
+          // exit();
+
 
           //Validate Email
           if(empty($data['email'])){
-            $data['email_err'] = 'Please enter email';
+            $errors['email_err'] = 'Please enter email';
           }
 
           //Validate Name
           if(empty($data['name'])){
-            $data['name_err'] = 'Please enter name';
+            $errors['name_err'] = 'Please enter name';
           }
 
           //Validate Password
           if(empty($data['password'])){
-            $data['password_err'] = 'Please enter password';
+            $errors['password_err'] = 'Please enter password';
           }elseif (strlen($data['password']) < 6) {
-            $data['password_err'] = 'Please must be at least 6 characters';
+            $errors['password_err'] = 'Please must be at least 6 characters';
           }
 
           //Validate Confirm Password
           if(empty($data['confirm_password'])){
-            $data['confirm_password_err'] = 'Please confirm password';
+            $errors['confirm_password_err'] = 'Please confirm password';
           }else {
             if($data['password'] != $data['confirm_password']){
-              $data['confirm_password_err'] = 'Passwords do not match';
+              $errors['confirm_password_err'] = 'Passwords do not match';
             }
           }
 
 
-          //Make sure errors are empty
-          if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
-            // Validated
-            die('Success');
-          } else {
-            $this->view('register.php', $data);
+          if(count($errors) == 0){
+
+            // validate that email doesnt already exist
+            $sql = "select * from users_loginsystem where users_email = '{$data['email']}'";
+            $result = $this->mysqli->query($sql);
+
+
+            if($result->num_rows == 0){
+              //Process Form
+              $form_data = [
+                'name' => trim($_POST['name']),
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password'])
+              ];
+
+              $sql = "INSERT INTO users_loginsystem (users_name, users_password, users_email) VALUES ('{$form_data['name']}', '{$form_data['password']}', '{$form_data['email']}')";
+
+              if ($this->mysqli->query($sql) === TRUE) {
+                $errors['success'] = 'Thank you for registering';
+                $_SESSION['valid'] = 1;
+                $_SESSION['user'] = $form_data;
+
+              } else {
+                $errors['success'] = 'Failed to register';
+              }
+            }
+            else{
+              $errors['success'] = 'Failed to register, email already exists';
+            }
+
+            return $errors;
+
+          }
+          else{
+            return $errors;
           }
 
-        } else {
-          // Init data
-          $data = [
-            'name' => '',
-            'email' => '',
-            'password' => '',
-            'confirm_password' => '',
-            'name_err' => '',
-            'email_err' => '',
-            'password_err' => '',
-            'confirm_password_err' => ''
-          ];
-            //Load View
-          // $this->view('register.php', $data);
+
         }
       }
 
@@ -86,47 +103,52 @@
           //Process Form
           $_POST= filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-          //Process Form
-          $data = [
-            'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),
-            'email_err' => '',
-            'password_err' => '',
-              ];
+          $data = $_POST;
+          $errors = [];
+
 
           //Validate Email
           if(empty($data['email'])){
-            $data['email_err'] = 'Please enter email';
+            $errors['email_err'] = 'Please enter email';
           }
 
           //Validate Password
           if(empty($data['password'])){
-            $data['password_err'] = 'Please enter password';
+            $errors['password_err'] = 'Please enter password';
           }
 
-          // Make sure those are empty
-          if(empty($data['email_err']) && empty($data['password_err'])){
-            // Validated
-            die('Success');
-          } else {
-            $this->view('login.php', $data);
+          if(count($errors) == 0){
+
+            // validate that email doesnt already exist
+            $sql = "select * from users_loginsystem where users_email = '{$data['email']}' and users_password = '{$data['password']}'";
+            $result = $this->mysqli->query($sql);
+
+            $row = $result->fetch_assoc();
+
+            $form_data = [
+              'name' => trim($row['users_name']),
+              'email' => trim($row['users_email'])
+            ];
+
+            if($result->num_rows == 1){
+              $_SESSION['valid'] = 1;
+              $_SESSION['user'] = $form_data;
+            }
+            else{
+              $errors['success'] = 'Failed to login';
+            }
+
+            return $errors;
+
+          }
+          else{
+            return $errors;
           }
 
 
-        } else {
-          // Init data
-          $data = [
-            'email' => '',
-            'password' => '',
-            'email_err' => '',
-            'password_err' => '',
-          ];
-          //   //Load View
-          // $this->view('login.php', $data);
-        }
       }
 
     }
-
+  }
 
  ?>

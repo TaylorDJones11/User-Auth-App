@@ -4,13 +4,14 @@
 $servername = 'localhost';
 $username = 'root';
 $password = 'root';
+$database = 'library';
 
 /* Attempt to connect to MySQL database */
-$conn = new mysqli_connect($servername, $username, $password);
+$mysqli = new mysqli($servername,$username,$password,$database);
 
 // Check connection
-if($conn->connect_error){
-    die("ERROR: Connection failed. " . $conn->connect_error);
+if ($mysqli->connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+  exit();
 }
-
 ?>

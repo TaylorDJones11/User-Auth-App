@@ -15,6 +15,7 @@ if(isset($_POST["register"])){
     header('Location: welcome.php');
     exit();
   }
+}
 ?>
 
 

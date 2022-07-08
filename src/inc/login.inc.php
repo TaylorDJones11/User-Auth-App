@@ -41,7 +41,7 @@ if(isset($_POST["login"])){
     <div class="card card-body bg-light mt-5">
       <div class="row">
         <div class="col member">
-          <h2 class="login-text"> Member Login</h2>
+          <h2 class="login-text">Login</h2>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ if(isset($_POST["login"])){
       <?php if(isset($errors['success'])): ?>
         <?php echo $errors['success'] ?>
       <?php endif; ?>
-      
+
       <p>Please fill in your credientails</p>
       <form class="" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 
@@ -65,6 +65,15 @@ if(isset($_POST["login"])){
           <input type="password" name="password" class="form-control form-control-md
           <?php echo (isset($errors['password_err']) && !empty($errors['password_err'])) ? 'is-invalid' : ''; ?>"  value="<?php echo (isset($data['password'])) ? $data['password'] : ''; ?>">
           <span class="invalid-feedback"><?php echo (isset($errors['password_err'])) ? $errors['password_err'] : ''; ?></span>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="name">User Type:</label><br>
+          <input type="radio" name="login_type" value="user" checked />
+          <label for="Member">Member</label>
+          <input type="radio" name="login_type" value="librarian" />
+          <label for="Librarian">Librarian</label>
+
         </div>
 
         <div class="row">
