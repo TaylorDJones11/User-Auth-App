@@ -46,3 +46,9 @@ h2.login-text:hover{
   text-align: center;
   padding: 10px 0px;
 }
+
+/* Welcome Page / Library Books Display */
+
+h1{
+  text-align: center;
+}

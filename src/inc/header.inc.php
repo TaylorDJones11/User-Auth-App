@@ -4,8 +4,8 @@
       <img src="src/img/books.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
       Libby Library
       <?php if(isset($_SESSION['valid'])): ?>
-          <a href="welcome.php" style="color: #fff">Books</a>
-          <a href="logout.php" style="color: #fff">Logout</a>
+          <a href="welcome.php" style="color: #000">Books</a>
+          <a href="logout.php" style="color: #000">Logout</a>
       <?php endif; ?>
     </a>
   </div>
