@@ -79,7 +79,7 @@ if(!isset($_SESSION['valid'])){
       <?php if($_SESSION['user_type'] == 'user'): ?>
         <section class="card-display">
           <div class="card">
-              <img src="img/display.png">
+              <img class="book-img" src="src/img/books.jpg">
               <div class="container">
                 <div class="content">
                   <h4><b><a href="book.php?id=<?php echo $book['book_id'] ?>"><?php echo $book['bookname'] ?></a></b></h4>

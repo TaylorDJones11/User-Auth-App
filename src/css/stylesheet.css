@@ -66,10 +66,21 @@ label.member{
 
 /* Members Welcome Page */
 
-
+.welcome-div{
+  margin-bottom: 70px;
+}
 
 .grid-item-books{
   margin-bottom: 15px;
+}
+
+.book-img{
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+}
+
+.content{
+  margin-top: 15px;
 }
 
 /* Libray Welcome Page  */
@@ -89,3 +100,14 @@ label.member{
 .add-book, .edit-book{
   margin-top: 75px;
 }
+
+/* Media Queries */
+/* @media query {
+
+}
+.grid-item-books{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: 20px;
+} */
