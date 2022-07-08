@@ -5,8 +5,8 @@
       Libby Library
     </a>
     <?php if(isset($_SESSION['valid'])): ?>
-        <a href="welcome.php" style="color: #000">Books</a>
-        <a href="logout.php" style="color: #000">Logout</a>
+        <a class="navbar-link" href="welcome.php" style="color: #000">Books</a>
+        <a class="navbar-link" href="logout.php" style="color: #000">Logout</a>
     <?php endif; ?>
   </div>
 </nav>

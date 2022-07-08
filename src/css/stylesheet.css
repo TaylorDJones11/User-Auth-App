@@ -25,10 +25,19 @@ footer{
   min-height: 10vh;
 }
 
-a{
-  text-decoration: none;
+
+
+div{
+text-align: center;
 }
 
+h1{
+padding-top: 10px;
+}
+/* Navbar */
+.navbar-link{
+  text-decoration: none;
+}
 
 /* Login Page */
 
@@ -57,22 +66,22 @@ label.member{
 
 /* Members Welcome Page */
 
-h1{
 
-  padding-top: 10px;
-}
-
-.welcome-div{
-  margin: 90px;
-  text-align: center;
-}
 
 .grid-item-books{
   margin-bottom: 15px;
 }
 
-/* Libray Welcome Page */
+/* Libray Welcome Page  */
 
-table{
-  width: 100vw;
+.panel-primary{
+  margin-top: 75px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* Libray Add Book  */
+
+.add-book{
+  margin-top: 75px;
 }

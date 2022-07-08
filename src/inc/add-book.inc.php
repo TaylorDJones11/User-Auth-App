@@ -10,12 +10,12 @@ $authorObject = new Author($mysqli);
 
 $authors = $authorObject->getAuthors();
 
-// is valid?
+// Checking Validation
 if(!isset($_SESSION['valid'])){
   header("Location: login.php");
   exit();
 }
-
+// Form Submission Takes Librarian back to Welcome Page
 if($_POST){
     $response = $bookObject->addBook($_POST);
     if($response){
@@ -25,32 +25,34 @@ if($_POST){
 }
 
 ?>
-<div style="margin: 100px;">
-  <h1>Add new book</h1>
-</div>
-<hr>
 
-<hr>
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-    <table style="width: 100%">
+
+<main>
+  <div>
+    <h1>Add new book</h1>
+  </div>
+
+<form class="add-book" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+  <fieldset>
+    <table>
         <tr>
-            <td>Book Name</td>
+            <td>Book Name:</td>
             <td><input type="text" name="bookname" required /></td>
         </tr>
         <tr>
-            <td>Year</td>
+            <td>Year:</td>
             <td><input type="text" name="year" required /></td>
         </tr>
         <tr>
-            <td>Genre</td>
+            <td>Genre:</td>
             <td><input type="text" name="genre" required /></td>
         </tr>
         <tr>
-            <td>Age group</td>
+            <td>Age group:</td>
             <td><input type="text" name="age_group" required /></td>
         </tr>
         <tr>
-            <td>Author</td>
+            <td>Author:</td>
             <td>
                 <select name="author_id">
                     <?php foreach($authors as $author): ?>
@@ -64,4 +66,6 @@ if($_POST){
             <td><input type="submit" name="Submit" /></td>
         </tr>
     </table>
+    </fieldset>
 </form>
+</main>

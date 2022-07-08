@@ -15,16 +15,18 @@ if(!isset($_SESSION['valid'])){
 
 ?>
 
-<!-- Displaying the User/Librarian Name -->
-<!-- Only Librarians can add new books -->
-<div class="welcome-div">
-  <h1>Welcome, <?php echo $_SESSION['user']['name']; ?></h1>
-  <?php if($_SESSION['user_type'] == 'librarian'): ?>
-    <a href="add-book.php">Add new book</a>
-  <?php endif; ?>
-</div>
-<hr>
+
 <main>
+
+  <!-- Displaying the User/Librarian Name -->
+  <!-- Only Librarians can add new books -->
+  <div class="welcome-div">
+    <h1>Welcome, <?php echo $_SESSION['user']['name']; ?></h1>
+    <?php if($_SESSION['user_type'] == 'librarian'): ?>
+      <a href="add-book.php">Add new book</a>
+    <?php endif; ?>
+  </div>
+
 
 <!-- Librarian Welcome View -->
 
