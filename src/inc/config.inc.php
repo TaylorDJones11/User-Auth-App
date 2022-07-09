@@ -1,7 +1,8 @@
 <?php
 /* Database credentials */
 
-$servername = 'localhost';
+// $servername = 'localhost';
+$servername = 'ns01.000webhost.com';
 $username = 'root';
 $password = 'root';
 $database = 'library';
